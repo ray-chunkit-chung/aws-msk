@@ -152,6 +152,13 @@ https://docs.aws.amazon.com/msk/latest/developerguide/delete-cluster.html
 
 ## MSK x Lambda
 
+https://aws.amazon.com/blogs/compute/using-amazon-msk-as-an-event-source-for-aws-lambda/
+
+https://catalog.us-east-1.prod.workshops.aws/workshops/c2b72b6f-666b-4596-b8bc-bafa5dcca741/en-US/msklambda
+
 comming soon ... 
+
+
+
 
 
