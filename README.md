@@ -104,7 +104,7 @@ Create client EC2 for demo/test
 MSKTutorialClusterEC2
 sg-xxxxxx
 
-in MSK instance's vpn console, select msk sg, add inbound rule from source EC2 sg. 
+in MSK instance's vpc console, select msk sg, add inbound rule from source EC2 sg. 
 
 ### Step4 ===============
 
