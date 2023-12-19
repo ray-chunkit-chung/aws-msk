@@ -1,8 +1,10 @@
 # aws-msk
 
+## MSK x EC2
+
 https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html
 
-=============== Step1 ===============
+### Step1 ===============
 
 https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html
 
@@ -47,7 +49,7 @@ Open monitoring with Prometheus	Not enabled	Yes
 Broker log delivery	Not enabled	Yes
 Cluster tags	-	Yes
 
-=============== Step2 ===============
+### Step2 ===============
 
 MSKTutorialCluster
 
@@ -90,21 +92,21 @@ policy
         }
     ]
 }
-'''
+```
 
 roles
 MSKTutorialClusterEC2
 
 
-=============== Step3 ===============
+### Step3 ===============
 
-EC2
+Create client EC2 for demo/test
 MSKTutorialClusterEC2
 sg-xxxxxx
 
 in MSK instance's vpn console, select msk sg, add inbound rule from source EC2 sg. 
 
-=============== Step4 ===============
+### Step4 ===============
 
 
 ```bash
@@ -131,7 +133,7 @@ b-1.xxx.amazonaws.com:9098,b-2.xxx.amazonaws.com:9098,b-3.xxx.amazonaws.com:9098
 
 ./kafka-topics.sh --create --bootstrap-server b-1.xxx.amazonaws.com:9098 --command-config client.properties --replication-factor 3 --partitions 1 --topic MSKTutorialTopic
 
-=============== Step5 ===============
+### Step5 ===============
 
 ./kafka-console-producer.sh --broker-list b-1.xxx.amazonaws.com:9098 --producer.config client.properties --topic MSKTutorialTopic
 
@@ -139,12 +141,11 @@ b-1.xxx.amazonaws.com:9098,b-2.xxx.amazonaws.com:9098,b-3.xxx.amazonaws.com:9098
 ./kafka-console-consumer.sh --bootstrap-server b-1.xxx.amazonaws.com:9098 --consumer.config client.properties --topic MSKTutorialTopic --from-beginning
 
 
-=============== Step6 ===============
+### Step6 ===============
 
 Try out various metrics in cloud watch
 
-=============== Step7 ===============
-
+### Step7 ===============
 
 https://docs.aws.amazon.com/msk/latest/developerguide/delete-cluster.html
 
