@@ -1,5 +1,7 @@
 # aws-msk
 
+Demonstration of Kafka streaming data to model training server for online learning
+
 ## MSK x EC2
 
 https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html
@@ -147,6 +149,8 @@ Try out various metrics in cloud watch
 
 ### Step7 ===============
 
+Delete all resources
+
 https://docs.aws.amazon.com/msk/latest/developerguide/delete-cluster.html
 
 
@@ -160,6 +164,10 @@ https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html
 
 Secret manager
 https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html
+
+comming soon ... 
+
+comming soon ... 
 
 comming soon ... 
 
