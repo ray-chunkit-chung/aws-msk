@@ -173,5 +173,10 @@ comming soon ...
 
 
 
+## Flink consumer with S3 sink 
 
+https://sid-sharma.medium.com/click-stream-processing-on-apache-flink-using-kafka-source-and-aws-s3-sink-b12e6ece783e
 
+https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on-aws-emr-yarn-cluster-930f73d84156
+
+https://gist.github.com/ssharma
