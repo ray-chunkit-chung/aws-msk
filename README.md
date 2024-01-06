@@ -167,10 +167,6 @@ https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html
 
 comming soon ... 
 
-comming soon ... 
-
-comming soon ... 
-
 
 
 ## Flink consumer with S3 sink 
@@ -232,4 +228,10 @@ metadata = v.get(timeout=10)
 print(v)
 ```
 
+
+# Terraform MSK
+
+https://registry.terraform.io/modules/terraform-aws-modules/msk-kafka-cluster/aws/latest/examples/complete
+
+Coming soon...
 
