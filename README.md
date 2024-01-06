@@ -180,3 +180,27 @@ https://sid-sharma.medium.com/click-stream-processing-on-apache-flink-using-kafk
 https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on-aws-emr-yarn-cluster-930f73d84156
 
 https://gist.github.com/ssharma
+
+
+```bash
+# install package
+sudo yum install python3-pip git -y
+
+# install python package
+pip install --upgrade tensorflow \
+tensorflow-datasets \
+tensorflow-io \
+keras \
+pandas \
+python-dotenv \
+kafka-python \
+scikit-learn \
+Jinja2
+
+# download src
+https://github.com/ray-chunkit-chung/ml-recommendation-engine-part3-data-etl
+```
+
+
+
+
