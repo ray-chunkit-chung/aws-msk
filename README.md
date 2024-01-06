@@ -240,6 +240,8 @@ https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?
 
 https://github.com/aws-samples/amazon-kinesis-data-analytics-examples/blob/master/GettingStarted/src/main/java/com/amazonaws/services/kinesisanalytics/BasicStreamingJob.java
 
+https://nightlies.apache.org/flink/flink-docs-release-1.12/dev/python/datastream-api-users-guide/intro_to_datastream_api.html
+
 Coming soon...
 
 
