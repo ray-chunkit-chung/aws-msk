@@ -181,6 +181,7 @@ https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on
 
 https://gist.github.com/ssharma
 
+Setup test environment on EC2. Assume EC2 has rol kafka read/write role and inbound traffic to kafka is allowed
 
 ```bash
 # install package
@@ -195,12 +196,40 @@ pandas \
 python-dotenv \
 kafka-python \
 scikit-learn \
-Jinja2
+Jinja2 \
+aws-msk-iam-sasl-signer-python
 
 # download src
 https://github.com/ray-chunkit-chung/ml-recommendation-engine-part3-data-etl
 ```
 
+A sample python producer to test MSK. Need an MSK IAM SASAL signer
 
+https://github.com/aws/aws-msk-iam-sasl-signer-python
+
+```py
+from aws_msk_iam_sasl_signer import MSKAuthTokenProvider
+from kafka import KafkaProducer
+import socket
+
+class MSKTokenProvider():
+    def token(self):
+        token, _ = MSKAuthTokenProvider.generate_auth_token('ap-southeast-2')
+        return token
+
+tp = MSKTokenProvider()
+
+producer = KafkaProducer(
+    bootstrap_servers=['xxxx'],
+    security_protocol='SASL_SSL',
+    sasl_mechanism='OAUTHBEARER',
+    sasl_oauth_token_provider=tp,
+    client_id=socket.gethostname(),
+)
+
+v = producer.send('MSKTutorialTopic', b'test')
+metadata = v.get(timeout=10)
+print(v)
+```
 
 
