@@ -177,6 +177,10 @@ https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on
 
 https://gist.github.com/ssharma
 
+https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?tab=readme-ov-file
+
+https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file
+
 Setup test environment on EC2. Assume EC2 has rol kafka read/write role and inbound traffic to kafka is allowed
 
 ```bash
@@ -199,7 +203,9 @@ aws-msk-iam-sasl-signer-python
 https://github.com/ray-chunkit-chung/ml-recommendation-engine-part3-data-etl
 ```
 
-A sample python producer to test MSK. Need an MSK IAM SASAL signer
+### Producer 
+
+A sample python data producer to test the MSK. Need an MSK IAM SASAL signer
 
 https://github.com/aws/aws-msk-iam-sasl-signer-python
 
@@ -227,6 +233,10 @@ v = producer.send('MSKTutorialTopic', b'test')
 metadata = v.get(timeout=10)
 print(v)
 ```
+
+### Consumer
+
+Coming soon...
 
 
 # Terraform MSK
