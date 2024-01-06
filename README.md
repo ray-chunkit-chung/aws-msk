@@ -238,6 +238,8 @@ https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?t
 
 https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file
 
+https://github.com/aws-samples/amazon-kinesis-data-analytics-examples/blob/master/GettingStarted/src/main/java/com/amazonaws/services/kinesisanalytics/BasicStreamingJob.java
+
 Coming soon...
 
 
