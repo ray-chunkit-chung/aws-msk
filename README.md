@@ -177,10 +177,6 @@ https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on
 
 https://gist.github.com/ssharma
 
-https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?tab=readme-ov-file
-
-https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file
-
 Setup test environment on EC2. Assume EC2 has rol kafka read/write role and inbound traffic to kafka is allowed
 
 ```bash
@@ -235,6 +231,12 @@ print(v)
 ```
 
 ### Consumer
+
+https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html?pg=ln&cp=bn
+
+https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?tab=readme-ov-file
+
+https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file
 
 Coming soon...
 
