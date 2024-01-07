@@ -50,7 +50,7 @@ while True:
     data = getReferrer()
     # print(data)
     try:
-        future = producer.send("stocktopic", value=data, key=data['ticker'])
+        future = producer.send("MSKTutorialTopicStock", value=data, key=data['ticker'])
         producer.flush()
         record_metadata = future.get(timeout=10)
         print("sent event to Kafka! topic {} partition {} offset {}".format(
