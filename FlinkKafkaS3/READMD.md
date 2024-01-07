@@ -24,7 +24,9 @@ mvn clean package -Dflink.version=1.15.3
 
 Create aws managed flink streaming app and link to the flink jar
 
-Setup network suggest below.
+Setup network and config properites suggested below.
+
+https://docs.aws.amazon.com/managed-flink/latest/java/example-msk.html
 
 https://docs.aws.amazon.com/managed-flink/latest/java/vpc.html
 
