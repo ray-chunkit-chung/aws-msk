@@ -31,3 +31,13 @@ https://docs.aws.amazon.com/managed-flink/latest/java/example-msk.html
 https://docs.aws.amazon.com/managed-flink/latest/java/vpc.html
 
 https://jaehyeon.me/blog/2023-10-26-real-time-streaming-with-kafka-and-flink-2/
+
+
+May need IAM auth for MSK connection
+
+https://stackoverflow.com/questions/72398012/failed-to-construct-kafka-consumer-in-flink-cluster-for-connecting-to-msk
+ 
+AWS lib aws-msk-iam-auth-1.1.4-all.jar and Kafka lib kafka-clients-2.4.1.jar into /opt/flink/lib folder inside the Flink nodes.
+
+
+
