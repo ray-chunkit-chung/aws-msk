@@ -43,6 +43,6 @@ AWS lib aws-msk-iam-auth-1.1.4-all.jar and Kafka lib kafka-clients-2.4.1.jar int
 https://stackoverflow.com/questions/77716072/timeout-exception-for-node-assignment-call-describetopics-in-managed-apache-fl
 
 
-
+https://stackoverflow.com/questions/72398012/failed-to-construct-kafka-consumer-in-flink-cluster-for-connecting-to-msk
 
 
