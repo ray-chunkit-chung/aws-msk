@@ -16,6 +16,16 @@ Producer test on EC2 (Assume EC2 has correct roles and MSK inbound rule)
 python ./FlinkKafkaS3/src/main/python/stock.py
 ```
 
+Package flink app and upload jar to s3
+
 ```bash
 mvn clean package -Dflink.version=1.15.3
 ```
+
+Create aws managed flink streaming app and link to the flink jar
+
+Setup network suggest below.
+
+https://docs.aws.amazon.com/managed-flink/latest/java/vpc.html
+
+https://jaehyeon.me/blog/2023-10-26-real-time-streaming-with-kafka-and-flink-2/
