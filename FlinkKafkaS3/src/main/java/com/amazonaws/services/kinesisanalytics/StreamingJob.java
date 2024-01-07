@@ -33,7 +33,6 @@ import java.util.Properties;
 import static org.apache.flink.table.api.Expressions.$;
 import static org.apache.flink.table.api.Expressions.dateFormat;
 
-
 public class StreamingJob {
     private static final Logger LOG = LoggerFactory.getLogger(StreamingJob.class);
 
@@ -47,10 +46,14 @@ public class StreamingJob {
         Map<String, Properties> applicationProperties = KinesisAnalyticsRuntime.getApplicationProperties();
         Properties flinkProperties = null;
 
-        String kafkaTopic = parameter.get("kafka-topic", "MSKTutorialTopic");
-        String brokers = parameter.get("brokers", "");
-        String s3Path = parameter.get("s3Path", "");
+        // Read runtime variables from env
+        final String defaultKafkaTopic = System.getenv().getOrDefault("MSK_TOPIC", "Test");
+        final String defaultMSKBrokers = System.getenv().getOrDefault("MSK_BROKERS", "Test");
+        final String defaultS3Path = System.getenv().getOrDefault("S3_PATH", "Test");
 
+        String kafkaTopic = parameter.get("kafka-topic", defaultKafkaTopic);
+        String brokers = parameter.get("brokers", defaultMSKBrokers);
+        String s3Path = parameter.get("s3Path", defaultS3Path);
 
         if (applicationProperties != null) {
             flinkProperties = applicationProperties.get("FlinkApplicationProperties");
@@ -78,7 +81,8 @@ public class StreamingJob {
     }
 
     public static class StreamingTableAPI {
-        public static void process(StreamExecutionEnvironment env, String kafkaTopic, String s3Path, Properties kafkaProperties) {
+        public static void process(StreamExecutionEnvironment env, String kafkaTopic, String s3Path,
+                Properties kafkaProperties) {
             StreamTableEnvironment streamTableEnvironment = StreamTableEnvironment.create(
                     env, EnvironmentSettings.newInstance().build());
 
@@ -96,13 +100,10 @@ public class StreamingJob {
             // Create the table
             Table table = streamTableEnvironment.fromDataStream(events);
 
-            final Table filteredTable = table.
-                    select(
-                            $("event_time"), $("ticker"), $("price"),
-                            dateFormat($("event_time"), "yyyy-MM-dd").as("dt"),
-                            dateFormat($("event_time"), "HH").as("hr")
-                    ).
-                    where($("price").isGreater(50));
+            final Table filteredTable = table.select(
+                    $("event_time"), $("ticker"), $("price"),
+                    dateFormat($("event_time"), "yyyy-MM-dd").as("dt"),
+                    dateFormat($("event_time"), "HH").as("hr")).where($("price").isGreater(50));
 
             final String s3Sink = "CREATE TABLE sink_table (" +
                     "event_time TIMESTAMP," +
@@ -127,7 +128,8 @@ public class StreamingJob {
     }
 
     public static class StreamingSQLAPI {
-        public static void process(StreamExecutionEnvironment env, String kafkaTopic, String s3Path, Properties kafkaProperties) {
+        public static void process(StreamExecutionEnvironment env, String kafkaTopic, String s3Path,
+                Properties kafkaProperties) {
             StreamTableEnvironment streamTableEnvironment = StreamTableEnvironment.create(
                     env, EnvironmentSettings.newInstance().build());
 
@@ -147,7 +149,6 @@ public class StreamingJob {
                     " 'scan.startup.mode' = 'earliest-offset'" +
                     ")";
 
-
             final String s3Sink = "CREATE TABLE sink_table (" +
                     "event_time TIMESTAMP," +
                     "ticker STRING," +
@@ -163,11 +164,11 @@ public class StreamingJob {
                     " 'format' = 'json'" +
                     ") ";
 
-
             streamTableEnvironment.executeSql(createTableStmt);
             streamTableEnvironment.executeSql(s3Sink);
 
-            final String insertSql = "INSERT INTO sink_table SELECT event_time,ticker,price,DATE_FORMAT(event_time, 'yyyy-MM-dd') as dt, " +
+            final String insertSql = "INSERT INTO sink_table SELECT event_time,ticker,price,DATE_FORMAT(event_time, 'yyyy-MM-dd') as dt, "
+                    +
                     "DATE_FORMAT(event_time, 'HH') as hh FROM StockRecord WHERE price > 50";
             streamTableEnvironment.executeSql(insertSql);
 
@@ -198,7 +199,6 @@ public class StreamingJob {
         }
     }
 
-
     @Getter
     @Setter
     @ToString
@@ -213,7 +213,8 @@ public class StreamingJob {
         private static final Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd hh:mm:ss")
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .registerTypeAdapter(Instant.class, (JsonDeserializer<Instant>) (json, typeOfT, context) -> Instant.parse(json.getAsString()))
+                .registerTypeAdapter(Instant.class,
+                        (JsonDeserializer<Instant>) (json, typeOfT, context) -> Instant.parse(json.getAsString()))
                 .create();
 
         public static Event parseEvent(byte[] event) {

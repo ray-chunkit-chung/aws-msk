@@ -27,13 +27,13 @@ Cluster type Provisioned No
 Apache Kafka version 3.5.1 Yes
 Cluster configuration MSK default Yes
 VPC vpc-vpc-id (default) No
-Subnets 
+Subnets
 subnet-xxxxxx
 subnet-xxxxxx
 subnet-xxxxxx
 No
 Public access Off Yes
-Security groups associated with VPC 
+Security groups associated with VPC
 sg-xxxxxx
 No
 Zones 3 No
@@ -225,7 +225,6 @@ v = producer.send('MSKTutorialTopic', b'test')
 metadata = v.get(timeout=10)
 print(v)
 ```
-
 
 ```py
 from aws_msk_iam_sasl_signer import MSKAuthTokenProvider
