@@ -1,0 +1,4 @@
+boto3
+kafka-python
+aws-msk-iam-sasl-signer-python
+python-dotenv
