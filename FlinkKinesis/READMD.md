@@ -13,6 +13,14 @@ aws kinesis create-stream --stream-name ExampleOutputStream --shard-count 1 --re
 
 ## Create dummy data to send to kinesis
 
+Create credential files for boto3 in python script
+
+```
+.aws/configs
+```
+
+Producer test 
+
 ```bash
 python send_data.py
 ```
