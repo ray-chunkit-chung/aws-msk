@@ -45,4 +45,4 @@ https://stackoverflow.com/questions/77716072/timeout-exception-for-node-assignme
 
 https://stackoverflow.com/questions/72398012/failed-to-construct-kafka-consumer-in-flink-cluster-for-connecting-to-msk
 
-
+https://stackoverflow.com/questions/74407121/aws-msk-iam-authentication-failure-access-denied-spring-boot
