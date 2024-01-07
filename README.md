@@ -4,11 +4,11 @@ Demonstration of Kafka streaming data to model training server for online learni
 
 ## MSK x EC2
 
-https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html
+<https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html>
 
 ### Step1 ===============
 
-https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html
+<https://docs.aws.amazon.com/msk/latest/developerguide/create-cluster.html>
 
 MSKTutorialCluster
 
@@ -23,39 +23,40 @@ If you want to customize these cluster settings, choose create cluster with cust
 Setting
 Value
 Editable after cluster creation
-Cluster type	Provisioned	No
-Apache Kafka version	3.5.1	Yes
-Cluster configuration	MSK default	Yes
-VPC	vpc-vpc-id (default)	No
-Subnets	
-subnet-xxxxxx 
-subnet-xxxxxx 
-subnet-xxxxxx 
+Cluster type Provisioned No
+Apache Kafka version 3.5.1 Yes
+Cluster configuration MSK default Yes
+VPC vpc-vpc-id (default) No
+Subnets 
+subnet-xxxxxx
+subnet-xxxxxx
+subnet-xxxxxx
 No
-Public access	Off	Yes
-Security groups associated with VPC	
-sg-xxxxxx 
+Public access Off Yes
+Security groups associated with VPC 
+sg-xxxxxx
 No
-Zones	3	No
-Broker type	kafka.m7g.large	Yes
-Brokers per zone	1	Yes
-Cluster storage mode	EBS storage only	Yes
-Storage	100 GiB	Yes
-Provisioned storage throughput per broker	Not enabled	Yes
-Access control method	IAM	Yes
-Encryption within the cluster	Enabled - TLS	No
-Encryption between clients - brokers	Enabled - TLS	Yes
-Encryption for data at rest	Use AWS managed CMK	No
-Monitoring metrics	Basic (default)	Yes
-Open monitoring with Prometheus	Not enabled	Yes
-Broker log delivery	Not enabled	Yes
-Cluster tags	-	Yes
+Zones 3 No
+Broker type kafka.m7g.large Yes
+Brokers per zone 1 Yes
+Cluster storage mode EBS storage only Yes
+Storage 100 GiB Yes
+Provisioned storage throughput per broker Not enabled Yes
+Access control method IAM Yes
+Encryption within the cluster Enabled - TLS No
+Encryption between clients - brokers Enabled - TLS Yes
+Encryption for data at rest Use AWS managed CMK No
+Monitoring metrics Basic (default) Yes
+Open monitoring with Prometheus Not enabled Yes
+Broker log delivery Not enabled Yes
+Cluster tags - Yes
 
 ### Step2 ===============
 
 MSKTutorialCluster
 
 policy
+
 ```json
 {
     "Version": "2012-10-17",
@@ -99,17 +100,15 @@ policy
 roles
 MSKTutorialClusterEC2
 
-
 ### Step3 ===============
 
 Create client EC2 for demo/test
 MSKTutorialClusterEC2
 sg-xxxxxx
 
-in MSK instance's vpc console, select msk sg, add inbound rule from source EC2 sg. 
+in MSK instance's vpc console, select msk sg, add inbound rule from source EC2 sg.
 
 ### Step4 ===============
-
 
 ```bash
 sudo yum -y install java-11
@@ -128,7 +127,6 @@ sasl.client.callback.handler.class=software.amazon.msk.auth.iam.IAMClientCallbac
 :wq
 ```
 
-
 Bootstrap servers
 go msk > View client information > Private endpoint (single-VPC)
 b-1.xxx.amazonaws.com:9098,b-2.xxx.amazonaws.com:9098,b-3.xxx.amazonaws.com:9098
@@ -139,9 +137,7 @@ b-1.xxx.amazonaws.com:9098,b-2.xxx.amazonaws.com:9098,b-3.xxx.amazonaws.com:9098
 
 ./kafka-console-producer.sh --broker-list b-1.xxx.amazonaws.com:9098 --producer.config client.properties --topic MSKTutorialTopic
 
-
 ./kafka-console-consumer.sh --bootstrap-server b-1.xxx.amazonaws.com:9098 --consumer.config client.properties --topic MSKTutorialTopic --from-beginning
-
 
 ### Step6 ===============
 
@@ -151,31 +147,15 @@ Try out various metrics in cloud watch
 
 Delete all resources
 
-https://docs.aws.amazon.com/msk/latest/developerguide/delete-cluster.html
+<https://docs.aws.amazon.com/msk/latest/developerguide/delete-cluster.html>
 
+## Flink consumer with S3 sink
 
-## MSK x Lambda
+<https://sid-sharma.medium.com/click-stream-processing-on-apache-flink-using-kafka-source-and-aws-s3-sink-b12e6ece783e>
 
-https://aws.amazon.com/blogs/compute/using-amazon-msk-as-an-event-source-for-aws-lambda/
+<https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on-aws-emr-yarn-cluster-930f73d84156>
 
-https://catalog.us-east-1.prod.workshops.aws/workshops/c2b72b6f-666b-4596-b8bc-bafa5dcca741/en-US/msklambda
-
-https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html
-
-Secret manager
-https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html
-
-comming soon ... 
-
-
-
-## Flink consumer with S3 sink 
-
-https://sid-sharma.medium.com/click-stream-processing-on-apache-flink-using-kafka-source-and-aws-s3-sink-b12e6ece783e
-
-https://sid-sharma.medium.com/distributed-batch-processing-using-apache-flink-on-aws-emr-yarn-cluster-930f73d84156
-
-https://gist.github.com/ssharma
+<https://gist.github.com/ssharma>
 
 Setup test environment on EC2. Assume EC2 has rol kafka read/write role and inbound traffic to kafka is allowed
 
@@ -199,11 +179,11 @@ aws-msk-iam-sasl-signer-python
 https://github.com/ray-chunkit-chung/ml-recommendation-engine-part3-data-etl
 ```
 
-### Producer 
+### Producer
 
 A sample python data producer to test the MSK. Need an MSK IAM SASAL signer
 
-https://github.com/aws/aws-msk-iam-sasl-signer-python
+<https://github.com/aws/aws-msk-iam-sasl-signer-python>
 
 ```py
 from aws_msk_iam_sasl_signer import MSKAuthTokenProvider
@@ -232,22 +212,33 @@ print(v)
 
 ### Consumer
 
-https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html?pg=ln&cp=bn
+<https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html?pg=ln&cp=bn>
 
-https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?tab=readme-ov-file
+<https://github.com/aws-samples/amazon-kinesis-data-analytics-flink-starter-kit?tab=readme-ov-file>
 
-https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file
+<https://github.com/aws-samples/amazon-managed-service-for-apache-flink-examples?tab=readme-ov-file>
 
-https://github.com/aws-samples/amazon-kinesis-data-analytics-examples/blob/master/GettingStarted/src/main/java/com/amazonaws/services/kinesisanalytics/BasicStreamingJob.java
+<https://github.com/aws-samples/amazon-kinesis-data-analytics-examples/blob/master/GettingStarted/src/main/java/com/amazonaws/services/kinesisanalytics/BasicStreamingJob.java>
 
-https://nightlies.apache.org/flink/flink-docs-release-1.12/dev/python/datastream-api-users-guide/intro_to_datastream_api.html
+<https://nightlies.apache.org/flink/flink-docs-release-1.12/dev/python/datastream-api-users-guide/intro_to_datastream_api.html>
 
 Coming soon...
-
 
 # Terraform MSK
 
-https://registry.terraform.io/modules/terraform-aws-modules/msk-kafka-cluster/aws/latest/examples/complete
+<https://registry.terraform.io/modules/terraform-aws-modules/msk-kafka-cluster/aws/latest/examples/complete>
 
 Coming soon...
 
+## MSK x Lambda (Will not do)
+
+<https://aws.amazon.com/blogs/compute/using-amazon-msk-as-an-event-source-for-aws-lambda/>
+
+<https://catalog.us-east-1.prod.workshops.aws/workshops/c2b72b6f-666b-4596-b8bc-bafa5dcca741/en-US/msklambda>
+
+<https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html>
+
+Secret manager
+<https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html>
+
+comming soon ...
