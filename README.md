@@ -135,15 +135,25 @@ Create .env file
 
 > export MSK_BROKERS=b-1.xxx.amazonaws.com:xxxx,b-2.xxx.amazonaws.com:xxxx,b-3.xxx.amazonaws.com:xxxx
 
+Create topic
+
 ```bash
 ./kafka-topics.sh --create --bootstrap-server $MSK_BROKERS --command-config client.properties --replication-factor 3 --partitions 1 --topic MSKTutorialTopic
 ```
 
 ### Step5 ===============
 
-./kafka-console-producer.sh --broker-list $MSK_BROKERS --producer.config client.properties --topic MSKTutorialTopic
+Test producer
 
+```bash
+./kafka-console-producer.sh --broker-list $MSK_BROKERS --producer.config client.properties --topic MSKTutorialTopic
+```
+
+Test consumer
+
+```bash
 ./kafka-console-consumer.sh --bootstrap-server $MSK_BROKERS --consumer.config client.properties --topic MSKTutorialTopic --from-beginning
+```
 
 ### Step6 ===============
 
